@@ -19,7 +19,8 @@ function getComputerChoice(params) {
 
 function getHumanChoice() {
     let input = prompt("Enter One of the three choices : Rock,Paper,Scissors");
-    if (input==='Rock'||input==='Paper'||input==='Scissors') {
+    input = input.toUpperCase();
+    if (input==='ROCK'||input==='PAPER'||input==='SCISSORS') {
         return input;   
     }
     else return "Enter a Valid Choice"
