@@ -1,17 +1,13 @@
-let humanScore =0;
-let computerScore = 0;
-
-
 function getComputerChoice(params) {
     let num = Math.random();
     if (num>0&&num<0.3) {
-        return "Rock";
+        return "ROCK";
     }
     else if (num>0.3&&num<0.6) {
-        return "Paper";
+        return "PAPER";
     }
     else {
-        return "Scissors";
+        return "SCISSORS";
     }
 
 }
@@ -23,11 +19,12 @@ function getHumanChoice() {
     if (input==='ROCK'||input==='PAPER'||input==='SCISSORS') {
         return input;   
     }
-    else return "Enter a Valid Choice"
+    else return "Please Enter a Valid Choice"
 }
-
-
-
+function playGame() {
+alert("Welcome!! Let's open the console by pressing ctrl+shift+j and play this classic game of Rock-Paper-Scissors")
+let humanScore = 0;
+let computerScore = 0;  
 function playRound(humanchoice,computerchoice) {
     humanchoice = humanchoice.toUpperCase();
     computerchoice = computerchoice.toUpperCase();
@@ -59,10 +56,39 @@ function playRound(humanchoice,computerchoice) {
         return "You Win!!! Scissors beats Paper"
     }   
 }
-const humanSelection = getHumanChoice();
-const computerSelection = getComputerChoice();
 
-console.log("You Played " + humanSelection);
-console.log("Computer Played "+ computerSelection);
-console.log(playRound(humanSelection, computerSelection));
+    
+    for (let index = 1; index < 6; index++) {
+        console.log('Round '+index);
+        const humanSelection = getHumanChoice();
+        if (humanSelection==="Please Enter a Valid Choice") {
+            console.log("Invalid Choice!!")  
+            break;
+        }
+        else{
+        const computerSelection = getComputerChoice();
+        console.log("You Played : " + humanSelection);
+        console.log("Computer Played : "+ computerSelection);
+        console.log(playRound(humanSelection,computerSelection));
+        console.log("Your Score : " + humanScore);
+        console.log("Computer's Score : " + computerScore);
+        }
+    }
 
+    if (humanScore!==computerScore&&humanScore!==0&&computerScore!==0)
+    console.log('Your final score after 5 rounds is ' + humanScore);
+    if (humanScore<computerScore) {
+        console.log("Ah! You've Lost to the computer.Press F5 or reload the page to play again");
+    }
+    else if(humanScore===computerScore&&humanScore!==0){
+        console.log("It's a tie!!. Press F5 or reload the page to play again")
+    }
+    else if (humanScore===computerScore&&humanScore===0&&computerScore===0){
+        console.log("Please reload the page and enter one of the 3 valid choices : Rock/Paper/Scissors")
+    }
+    else {
+        console.log("Congratulations! You've beat the computer")
+    }
+}
+
+console.log(playGame());
