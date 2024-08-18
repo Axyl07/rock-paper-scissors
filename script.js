@@ -1,101 +1,106 @@
+alert("Welcome!! Let's play this classic game of Rock-Paper-Scissors");
+
+
 function getComputerChoice(params) {
   let num = Math.random();
-  if (num > 0 && num < 0.3) {
+  if (num > 0 && num < 0.333) {
     return "ROCK";
-  } else if (num > 0.3 && num < 0.6) {
+  } else if (num > 0.333 && num < 0.666) {
     return "PAPER";
   } else {
     return "SCISSORS";
   }
 }
+const score = document.querySelector("#score");
 
-// function getHumanChoice() {
-//   let input = prompt("Enter One of the three choices : Rock,Paper,Scissors");
-//   input = input.toUpperCase();
-//   if (input === "ROCK" || input === "PAPER" || input === "SCISSORS") {
-//     return input;
-//   } else return "Please Enter a Valid Choice";
-// }
+let humanScore = 0;
+let computerScore = 0;
 
-function playGame() {
-  alert("Welcome!! Let's play this classic game of Rock-Paper-Scissors");
-  let humanScore = 0;
-  let computerScore = 0;
+  const rockButton = document.querySelector("#rock");
+  const paperButton = document.querySelector("#paper");
+  const scissorsButton = document.querySelector("#scissors");
 
-  const btn1 = document.querySelector("#btn1");
-  const btn2 = document.querySelector("#btn2");
-  const btn3 = document.querySelector("#btn3");
 
-  if (btn1) {
-    btn1.addEventListener("click", () => {
-      playRound("rock", getComputerChoice());
+  const reset = document.querySelector("#reset");
+  const results = document.querySelector("#results");
+
+  if (rockButton) {
+    rockButton.addEventListener("click", () => {
+      playRound("rock", getComputerChoice())
+      scoreCheck();
     });
   }
-  if (btn2) {
-    btn2.addEventListener("click", () => {
-      playRound("paper", getComputerChoice());
+  
+  if (paperButton) {
+    paperButton.addEventListener("click", () => {
+      playRound("paper", getComputerChoice())
+      scoreCheck();
     });
   }
-  if (btn3) {
-    btn3.addEventListener("click", () => {
-      playRound("scissors", getComputerChoice());
+  if (scissorsButton) {
+    scissorsButton.addEventListener("click", () => {
+      playRound("scissors", getComputerChoice())
+      scoreCheck();
     });
   }
 
+
+  if (reset) {
+    reset.addEventListener("click",()=>{
+      humanScore =  0 ; 
+      computerScore = 0 ;
+      score.textContent = '';
+    })
+  }
   function playRound(humanchoice, computerchoice) {
     humanchoice = humanchoice.toUpperCase();
-    computerchoice = getComputerChoice();
-    computerchoice = computerchoice.toUpperCase();
     if (humanchoice === computerchoice) {
-      return "Its a tie!! Nobody gets a point";
+      results.textContent = "Its a tie!! Nobody gets a point " + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
     } else if (humanchoice === "ROCK" && computerchoice === "PAPER") {
       computerScore++;
-      return "You Lose!!! Paper beats Rock";
+      results.textContent = "You Lose!!! Paper beats Rock "  + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
     } else if (humanchoice === "ROCK" && computerchoice === "SCISSORS") {
       humanScore++;
-      return "You Win!!! Rock beats Scissors";
+      results.textContent = "You Win!!! Rock beats Scissors "  + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
     } else if (humanchoice === "PAPER" && computerchoice === "ROCK") {
       humanScore++;
-      return "You Win!!! Paper beats Rock";
+      results.textContent = "You Win!!! Paper beats Rock "  + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
     } else if (humanchoice === "PAPER" && computerchoice === "SCISSORS") {
       computerScore++;
-      return "You Lose!!! Scissor beats Paper";
+      results.textContent = "You Lose!!! Scissor beats Paper "  + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
     } else if (humanchoice === "SCISSORS" && computerchoice === "ROCK") {
       computerScore++;
-      return "You Lose!!! Rock beats Scissors";
+      results.textContent = "You Lose!!! Rock beats Scissors " + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
     } else {
       humanScore++;
-      return "You Win!!! Scissors beats Paper";
+      results.textContent = "You Win!!! Scissors beats Paper " + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
     }
+
+    return [humanScore,computerScore];
+  }
+  
+  function scoreCheck(){
+
+        if (humanScore===5 || computerScore===5) {
+          if (humanScore < computerScore) {
+            score.textContent =
+            "Ah! You've Lost to the computer. Press the 'Reset' button to play again.";
+            humanScore = 0;
+            computerScore =0;
+          } else if (humanScore === computerScore && humanScore !== 0) {
+            score.textContent =
+            "It's a tie!!. Press the 'Reset' button to play again";
+            humanScore = 0;
+            computerScore =0;
+          } 
+          else {
+            score.textContent = "Congratulations! You've beat the computer!!. Press the 'Reset' button to play again.";
+            humanScore =  0;
+            computerScore = 0;
+          }  
+        }
   }
 
-  // const computerSelection = getComputerChoice();
-  //   console.log("You Played : " + humanSelection);
-  //   console.log("Computer Played : " + computerSelection);
-  //   console.log(playRound(humanSelection, computerSelection));
-  //   console.log("Your Score : " + humanScore);
-  //   console.log("Computer's Score : " + computerScore);
 
-  const div = document.querySelector("div");
-  if (humanScore == 5 || computerScore == 5) {
-    if (humanScore !== computerScore && humanScore !== 0 && computerScore !== 0)
-      div.textContent = "Your final score after 5 rounds is " + humanScore;
-    if (humanScore < computerScore) {
-      div.textContent =
-        "Ah! You've Lost to the computer.Press F5 or reload the page to play again";
-    } else if (humanScore === computerScore && humanScore !== 0) {
-      div.textContent =
-        "It's a tie!!. Press F5 or reload the page to play again";
-    } else if (
-      humanScore === computerScore &&
-      humanScore === 0 &&
-      computerScore === 0
-    ) {
-      div.textContent =
-        "Please reload the page and press one of the 3 valid choices : Rock/Paper/Scissors";
-    } else {
-      div.textContent = "Congratulations! You've beat the computer";
-    }
-  }
-}
-console.log(playGame());
+
+
