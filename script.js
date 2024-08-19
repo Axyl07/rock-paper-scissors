@@ -1,4 +1,4 @@
-alert("Welcome!! Let's play this classic game of Rock-Paper-Scissors");
+// alert("Welcome!! Let's play this classic game of Rock-Paper-Scissors");
 
 
 function getComputerChoice(params) {
@@ -20,6 +20,8 @@ let computerScore = 0;
   const paperButton = document.querySelector("#paper");
   const scissorsButton = document.querySelector("#scissors");
 
+  const humanScr = document.querySelector("#humanScore");
+  const compScr = document.querySelector("#computerScore");
 
   const reset = document.querySelector("#reset");
   const results = document.querySelector("#results");
@@ -47,36 +49,46 @@ let computerScore = 0;
 
   if (reset) {
     reset.addEventListener("click",()=>{
-      humanScore =  0 ; 
-      computerScore = 0 ;
+      humanScore =  '0' ; 
+      computerScore = '0' ;
       score.textContent = '';
     })
   }
   function playRound(humanchoice, computerchoice) {
     humanchoice = humanchoice.toUpperCase();
     if (humanchoice === computerchoice) {
-      results.textContent = "Its a tie!! Nobody gets a point " + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
+      results.textContent = "Its a tie!! Nobody gets a point ";
     } else if (humanchoice === "ROCK" && computerchoice === "PAPER") {
       computerScore++;
-      results.textContent = "You Lose!!! Paper beats Rock "  + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
+      results.textContent = "You Lose!!! Paper beats Rock ";
+      humanScr.textContent = humanScore;
+      compScr.textContent = computerScore;
     } else if (humanchoice === "ROCK" && computerchoice === "SCISSORS") {
       humanScore++;
-      results.textContent = "You Win!!! Rock beats Scissors "  + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
+      results.textContent = "You Win!!! Rock beats Scissors ";
+      humanScr.textContent = humanScore;
+      compScr.textContent = computerScore;
     } else if (humanchoice === "PAPER" && computerchoice === "ROCK") {
       humanScore++;
-      results.textContent = "You Win!!! Paper beats Rock "  + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
+      results.textContent = "You Win!!! Paper beats Rock ";
+      humanScr.textContent = humanScore;
+      compScr.textContent = computerScore;
     } else if (humanchoice === "PAPER" && computerchoice === "SCISSORS") {
       computerScore++;
-      results.textContent = "You Lose!!! Scissor beats Paper "  + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
+      results.textContent = "You Lose!!! Scissor beats Paper "; 
+      humanScr.textContent = humanScore;
+      compScr.textContent = computerScore;
     } else if (humanchoice === "SCISSORS" && computerchoice === "ROCK") {
       computerScore++;
-      results.textContent = "You Lose!!! Rock beats Scissors " + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
+      results.textContent = "You Lose!!! Rock beats Scissors ";
+      humanScr.textContent = humanScore;
+      compScr.textContent = computerScore;
     } else {
       humanScore++;
-      results.textContent = "You Win!!! Scissors beats Paper " + " Your Score => " + humanScore + " and Computer Score =>" + computerScore;
+      results.textContent = "You Win!!! Scissors beats Paper ";
+      humanScr.textContent = humanScore;
+      compScr.textContent = computerScore;
     }
-
-    return [humanScore,computerScore];
   }
   
   function scoreCheck(){

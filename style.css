@@ -1,19 +1,36 @@
 
-
 /* // <uniquifier>: Use a unique and descriptive class name */
 /* // <weight>: Use a value from 300 to 800 */
+
+#humanScore,#computerScore{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    border: 5px solid #f472b6;
+    font-size: 35px;
+}
+
+#scoreBoard{
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    padding: 0px;
+    margin: 10px;
+}
 
 #reset-button{
     display: flex;
     flex: 1;
     flex-wrap: wrap;
     justify-content: space-evenly;
-    margin: 1px 25%;
-    padding: 25px;
+    margin: 15px 25%;
+    padding: 0px;
 }
 
 
 body {
+    
     background-color: #00002c;
     color: white;
   font-family: "Open Sans", sans-serif;
@@ -22,7 +39,7 @@ body {
   font-style: normal;
   font-variation-settings:
     "wdth" 100;
-    font-size: 25px;
+    font-size: 20px;
 }
 
 
@@ -42,7 +59,20 @@ button{
 
 }
 
+#humanScore,#computerScore{
+    font-size: 50px;
+    padding: 25px;
+}
+#humanScore{
+    color: #2bfc01;
+}
+
+#computerScore{
+    color: #fc0161;
+}
+
 h1,h2,h3{
+    font-size: 25px;
     display: flex;
     flex-wrap: wrap;
     flex: 1;
@@ -50,7 +80,14 @@ h1,h2,h3{
     justify-content: center;
 }
 
+#humanBox,#computerBox{
+    display: flex;
+    flex-direction: column;
+}
+
 image-div{
+    padding: 0px;
+    margin: 0px;
     display: flex;
     flex-wrap: wrap;
     flex: 1;
@@ -62,12 +99,15 @@ image-div{
     display: flex;
     flex-wrap: wrap;
     flex: 1;
-    text-decoration-color: #f472b6;
-    justify-content: space-evenly;
+    justify-content: space-between;
     background-color: #111827;
     border: 5px solid #f472b6;
-    padding: 25px;
-    margin: 10px 25%;
+    padding: 15px;
+    margin: 15px 25%;
+}
+
+#results,#score{
+    margin: 10px;
 }
 
 div{
