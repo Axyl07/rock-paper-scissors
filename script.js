@@ -49,9 +49,11 @@ let computerScore = 0;
 
   if (reset) {
     reset.addEventListener("click",()=>{
-      humanScore =  '0' ; 
-      computerScore = '0' ;
-      score.textContent = '';
+      humanScore = 0;
+      computerScore = 0;
+      humanScr.textContent =  '0' ;
+      compScr.textContent = '0' ;
+      score.textContent = "Let's Play";
     })
   }
   function playRound(humanchoice, computerchoice) {
