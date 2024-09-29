@@ -1,5 +1,3 @@
-// alert("Welcome!! Let's play this classic game of Rock-Paper-Scissors");
-
 
 function getComputerChoice(params) {
   let num = Math.random();
@@ -20,8 +18,10 @@ let computerScore = 0;
   const paperButton = document.querySelector("#paper");
   const scissorsButton = document.querySelector("#scissors");
 
-  const humanScr = document.querySelector("#humanScore");
-  const compScr = document.querySelector("#computerScore");
+const humanScr = document.querySelector("#humanScore");
+humanScr.textContent = "0";
+const compScr = document.querySelector("#computerScore");
+compScr.textContent = "0";
 
   const reset = document.querySelector("#reset");
   const results = document.querySelector("#results");
